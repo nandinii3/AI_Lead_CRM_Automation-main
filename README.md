@@ -3,8 +3,6 @@
 
 An AI-powered lead qualification pipeline: n8n captures leads from a web form or webhook, FastAPI scores them with OpenAI Structured Outputs, stores results in Supabase (PostgreSQL), and notifies a human on Slack when a lead is worth immediate attention.
 
-![End-to-end demo: form submission to Slack notification](docs/demo.gif)
-
 ## Overview
 
 ```
