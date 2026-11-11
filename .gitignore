@@ -1,0 +1,19 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+.venv/
+
+# Python and tests
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local planning file excluded from the standalone portfolio repository
+PLAN.md
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

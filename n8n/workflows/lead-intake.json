@@ -1,0 +1,140 @@
+{
+  "name": "Lead Intake",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f943ce48-2404-49a7-8cc7-4323e077ac10",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -224,
+        -80
+      ],
+      "id": "f42ece30-fdaa-4e7d-82df-24097bece930",
+      "name": "Webhook",
+      "webhookId": "f943ce48-2404-49a7-8cc7-4323e077ac10"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://app:8000/leads/analyze",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": \"{{ $json.body.name }}\",\n  \"company\": \"{{ $json.body.company }}\",\n  \"email\": \"{{ $json.body.email }}\",\n  \"message\": \"{{ $json.body.message }}\",\n  \"source\": \"{{ $json.body.source || 'n8n_webhook' }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -16,
+        -80
+      ],
+      "id": "c9b79446-4b1b-4c7c-a5d4-70cfb5e00d2e",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "formTitle": "Contact Us",
+        "formDescription": "Tell us about your automation needs",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Company",
+              "requiredField": true
+            },
+            {
+              "fieldType": "email",
+              "fieldLabel": "Email",
+              "requiredField": true
+            },
+            {
+              "fieldType": "textarea",
+              "fieldLabel": "Message",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        -224,
+        -320
+      ],
+      "id": "74d01284-ad0b-4b30-aa8a-ca6b04c37e73",
+      "name": "On form submission",
+      "webhookId": "5bdad83c-d587-4de2-8481-2ef4b943d5dc"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://app:8000/leads/analyze",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": \"{{ $json.Name }}\",\n  \"company\": \"{{ $json.Company }}\",\n  \"email\": \"{{ $json.Email }}\",\n  \"message\": \"{{ $json.Message }}\",\n  \"source\": \"n8n_form\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -16,
+        -320
+      ],
+      "id": "48b38d60-a878-43b0-9ea1-2a616b27c3c2",
+      "name": "HTTP Request Form"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request Form",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

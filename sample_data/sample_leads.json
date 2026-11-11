@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Aarav Sharma",
+    "company": "Nexa Logistics Pvt. Ltd.",
+    "email": "aarav.sharma@nexalogistics.in",
+    "message": "Hello, we are looking for a solution to automate customer query handling. We have a team of 80 people and process about 500 queries per month. We have an open budget and need a fast implementation.",
+    "source": "contact_form"
+  },
+  {
+    "name": "Priya Nair",
+    "company": "Nair Advisory Services",
+    "email": "priya.nair@nairadvisory.in",
+    "message": "What is the implementation cost? Please share the pricing details.",
+    "source": "contact_form"
+  },
+  {
+    "name": "Rohit Mehta",
+    "company": "MedCore Innovations Pvt. Ltd.",
+    "email": "rohit.mehta@medcoreinnovations.in",
+    "message": "We are a healthcare company with 200+ employees. We are looking for a partner to automate HR and onboarding processes using AI. We already have a budget approved for Q3 and are looking for a provider before the end of the month.",
+    "source": "webinar_signup"
+  },
+  {
+    "name": "Ananya Kapoor",
+    "company": "Solo Stack Studio",
+    "email": "ananya@solostackstudio.in",
+    "message": "Hi, can you help me with a side project? I want to integrate ChatGPT into my application. I do not have a large budget.",
+    "source": "contact_form"
+  }
+]
